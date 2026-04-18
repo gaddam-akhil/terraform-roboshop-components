@@ -28,4 +28,5 @@ variable "app_version" {
 
 variable "domain_name" {
     default = "gaddam.online"
+    type = string
 }
