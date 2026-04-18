@@ -10,14 +10,6 @@ variable "component" {
   type        = string
 }
 
-variable "port_number" {
-    default = "8080"
-}
-
-variable "health_check" {
-    default = "/health"
-}
-
 variable "rule_priority" {
     type = string
 }

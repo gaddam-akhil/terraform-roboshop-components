@@ -41,7 +41,7 @@ resource "terraform_data" "main" {
 resource "aws_ec2_instance_state" "main" {
   instance_id = aws_instance.main.id
   state       = "stopped"
-   depends_on = [terraform_data.bootstrap-main]
+   depends_on = [terraform_data.main]
 } 
 
 resource "aws_ami_from_instance" "main" {
@@ -59,7 +59,7 @@ resource "aws_ami_from_instance" "main" {
 
 resource "aws_lb_target_group" "main" {
   name     = "${var.project_name}-${var.env}--${var.component}"
-  port     = var.port_number
+  port     = local.port_number
   protocol = "HTTP"
   vpc_id   = local.vpc_id
   deregistration_delay = 60
@@ -211,7 +211,7 @@ resource "aws_lb_listener_rule" "main" {
   }
 } 
 
-resource "terraform_data" "main" {
+resource "terraform_data" "main_delete" {
   triggers_replace = [
     aws_instance.main.id
   ]
