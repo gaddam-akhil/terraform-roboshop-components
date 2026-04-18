@@ -65,7 +65,7 @@ resource "aws_lb_target_group" "main" {
   deregistration_delay = 60
 
   health_check  {
-    enabled = true
+    #enabled = true
     healthy_threshold = 2
     interval = 10
     matcher = "200-299"
