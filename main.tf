@@ -41,7 +41,7 @@ resource "terraform_data" "main" {
 resource "aws_ec2_instance_state" "main" {
   instance_id = aws_instance.main.id
   state       = "stopped"
-   depends_on = [terraform_data.bootstrap-main]
+   depends_on = [terraform_data.main]
 } 
 
 resource "aws_ami_from_instance" "main" {
@@ -211,7 +211,7 @@ resource "aws_lb_listener_rule" "main" {
   }
 } 
 
-resource "terraform_data" "main" {
+resource "terraform_data" "main_delete" {
   triggers_replace = [
     aws_instance.main.id
   ]
