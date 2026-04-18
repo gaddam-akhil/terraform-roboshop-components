@@ -35,5 +35,5 @@ data "aws_ssm_parameter" "frontend_alb_listener_arn" {
   }
 
 data "aws_ssm_parameter" "vpc_id" {
-    name = "/${var.project}/${var.env}/vpc_id"
+    name = "/${var.project_name}/${var.env}/vpc_id"
 }  
